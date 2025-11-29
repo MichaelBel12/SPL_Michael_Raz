@@ -54,8 +54,8 @@ void Playlist::add_track(AudioTrack* track) {
     head = new_node;
     track_count++;
 
-    std::cout << "Added '" << track->get_title() << "' to playlist '" 
-              << playlist_name << "'" << std::endl;
+    //std::cout << "Added '" << track->get_title() << "' to playlist '" //print twice
+     //         << playlist_name << "'" << std::endl;
 }
 
 void Playlist::remove_track(const std::string& title) {
@@ -156,6 +156,7 @@ std::vector<AudioTrack*> Playlist::getTracks() const {
 }
 
 void Playlist::clean(std::string new_name){
+    std::cout << "Created playlist: " << new_name << std::endl;
     PlaylistNode* current = head; //didn't change.
     while(current){
         PlaylistNode* toDel=current;

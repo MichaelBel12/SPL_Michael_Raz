@@ -25,18 +25,18 @@ void DJLibraryService::buildLibrary(const std::vector<SessionConfig::TrackInfo>&
             MP3Track* curr = new MP3Track(curr_track.title, curr_track.artists, curr_track.duration_seconds,
             curr_track.bpm, curr_track.extra_param1, curr_track.extra_param2);
             library.push_back(curr);
-            std::cout << " MP3Track created:  " << curr->get_bitrate() << " kbps" << std::endl;
+            std::cout << "MP3Track created: " << curr->get_bitrate() << " kbps" << std::endl;
         }
         else if(curr_track.type == "WAV"){
             WAVTrack* curr = new WAVTrack(curr_track.title, curr_track.artists, curr_track.duration_seconds,
                  curr_track.bpm, curr_track.extra_param1, curr_track.extra_param2);
                 library.push_back(curr);
-                std::cout << " WAVTrack created: " << curr->get_sample_rate() << 
+                std::cout << "WAVTrack created: " << curr->get_sample_rate() << 
                 "Hz/" << curr->get_bit_depth() << "bit" << std::endl;
         }
 
     }
-    std::cout << "[INFO] Track library built:  " << library.size() << " tracks loaded" << std::endl;
+    std::cout << "[INFO] Track library built: " << library.size() << " tracks loaded" << std::endl;
 }
 
 
@@ -81,7 +81,7 @@ AudioTrack* DJLibraryService::findTrack(const std::string& track_title) {
 
 void DJLibraryService::loadPlaylistFromIndices(const std::string& playlist_name, 
                                                const std::vector<int>& track_indices) {
-    std::cout << " [INFO] Loading playlist: " << playlist_name << std::endl;
+    std::cout << "[INFO] Loading playlist: " << playlist_name << std::endl;
     playlist.clean(playlist_name);
     int counter = 0; //Counting tracks added
     int size = library.size();
@@ -101,11 +101,11 @@ void DJLibraryService::loadPlaylistFromIndices(const std::string& playlist_name,
                 clonePtr->analyze_beatgrid();
                 playlist.add_track(clonePtr);
                 counter++;
-                std::cout << " Added '" << clonePtr->get_title() << "' to playlist '" << playlist_name << "'" << std::endl;
+                std::cout << "Added '" << clonePtr->get_title() << "' to playlist '" << playlist_name << "'" << std::endl;
             }
 
         }
-        std::cout << " [INFO] Playlist loaded: " << playlist_name << " (" << counter << " tracks)" << std::endl;
+        std::cout << "[INFO] Playlist loaded: " << playlist_name << " (" << counter << " tracks)" << std::endl;
     }
     
     
