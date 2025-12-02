@@ -203,12 +203,12 @@ void DJSession::simulate_dj_performance() {
                 }
                 added=load_playlist(interactivePlaylist);
             }   
-            for(const std::string& track:track_titles){
-                std::cout << "\n–- Processing: "<< track << "–-" << std::endl;
+            for(size_t i=track_titles.size()-1; i<track_titles.size() ;i--){
+                std::cout << "\n-–- Processing: "<< track_titles[i] << " -–-" << std::endl;
                 stats.tracks_processed++;
-                load_track_to_controller(track);
-                controller_service.displayCacheStatus();
-                load_track_to_mixer_deck(track);
+                load_track_to_controller(track_titles[i]);
+                controller_service.displayCacheStatus(); // its better to do a seperate function, yet it helps me understand the code better.
+                load_track_to_mixer_deck(track_titles[i]);
                 mixing_service.displayDeckStatus();
             }
 
